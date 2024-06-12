@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enrollments-deployment
+spec:
+  replicas: 2  # Increase the number of replicas for redundancy and load handling
+  selector:
+    matchLabels:
+      app: enrollments
+  template:
+    metadata:
+      labels:
+        app: enrollments
+    spec:
+      containers:
+      - name: enrollments
+        image: markvellaum/university:v0.0.1
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: enrollments-config
+

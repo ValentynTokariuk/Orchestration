@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: enrollments-config
+data:
+  app_port: "80"
+  database_hostname: "postgres-db"
+  database_password: "password"
+  database_user: "user"
+  database_name: "enrollmentdb"
+  database_port: "5432"

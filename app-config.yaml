@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: enrollments-config
+data:
+  app_port: "80"
+
