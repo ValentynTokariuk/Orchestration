@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enrollments-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: enrollments
+  template:
+    metadata:
+      labels:
+        app: enrollments
+    spec:
+      containers:
+      - name: enrollments
+        image: markvellaum/university:v0.0.1
+        ports:
+        - containerPort: 80
+        env:
+        - name: PGHOST
+          value: my-postgres-postgresql.default.svc.cluster.local
+        - name: PGPORT
+          value: "5432"
+        - name: PGUSER
+          value: "postgres"
+        - name: PGPASS
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: postgres-password
+        - name: PGDB
+          value: "universitydb"

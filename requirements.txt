@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+sqlalchemy  # for a database
+psycopg2-binary  # PostgreSQL driver for Python
+pydantic  # For data validation and settings management
+
